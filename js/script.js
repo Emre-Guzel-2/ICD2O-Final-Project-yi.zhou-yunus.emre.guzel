@@ -140,7 +140,7 @@ function escapeHtml (text) {
 }
 
 // Call Gemini API to get bot response
-async function getGeminiResponse(prompt) {
+async function getGeminiResponse (prompt) {
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
 
   const requestBody = {
@@ -197,7 +197,7 @@ async function getGeminiResponse(prompt) {
 }
 
 // Handle weather-related prompts separately
-async function handleWeatherPrompt(userText) {
+async function handleWeatherPrompt (userText) {
   const cityMatch = userText.match(/weather in (.+)/i)
   if (!cityMatch) return null
 
