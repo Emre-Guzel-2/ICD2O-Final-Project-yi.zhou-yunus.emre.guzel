@@ -79,7 +79,7 @@ chatForm.addEventListener('submit', async function (event) {
 })
 
 // Add a message to the chat area
-function appendMessage(text, sender, elementId = null) {
+function appendMessage (text, sender, elementId = null) {
   const messageDiv = document.createElement('div')
   messageDiv.classList.add('chat-message', `${sender}-message`)
 
@@ -120,7 +120,7 @@ function appendMessage(text, sender, elementId = null) {
 }
 
 // Remove a message by its ID
-function removeMessage(elementId) {
+function removeMessage (elementId) {
   const messageElement = document.getElementById(elementId)
   if (messageElement !== null) {
     messageElement.remove()
@@ -128,7 +128,7 @@ function removeMessage(elementId) {
 }
 
 // Helper function to escape HTML entities in the code
-function escapeHtml(text) {
+function escapeHtml (text) {
   const map = {
     '&': '&amp;',
     '<': '&lt;',
