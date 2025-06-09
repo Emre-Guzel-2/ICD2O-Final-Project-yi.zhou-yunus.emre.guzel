@@ -217,7 +217,7 @@ async function handleWeatherPrompt(userText) {
       throw new Error(res.message || 'Weather API error')
     }
 
-    const temp = Math.round(res.main.temp) // current temp, not min temp
+    const temp = Math.round(res.main.temp)
     const pressure = res.main.pressure
     const pressureAtm = (pressure / 1013.25).toFixed(2)
     const rise = new Date(res.sys.sunrise * 1000)
