@@ -78,7 +78,7 @@ chatForm.addEventListener('submit', async function (event) {
 })
 
 // Add a message to the chat area
-function appendMessage(text, sender, elementId = null) {
+function appendMessage (text, sender, elementId = null) {
   const messageDiv = document.createElement('div')
   messageDiv.classList.add('chat-message', `${sender}-message`)
 
@@ -119,7 +119,7 @@ function appendMessage(text, sender, elementId = null) {
 }
 
 // Remove a message by its ID
-function removeMessage(elementId) {
+function removeMessage (elementId) {
   const messageElement = document.getElementById(elementId)
   if (messageElement !== null) {
     messageElement.remove()
@@ -127,7 +127,7 @@ function removeMessage(elementId) {
 }
 
 // Helper function to escape HTML entities in the code
-function escapeHtml(text) {
+function escapeHtml (text) {
   const map = {
     '&': '&amp;',
     '<': '&lt;',
@@ -135,7 +135,7 @@ function escapeHtml(text) {
     '"': '&quot;',
     "'": '&#039;'
   }
-  return text.replace(/[&<>"']/g, function (m) { return map[m] })
+  return text.replace (/[&<>"']/g, function (m) { return map[m] })
 }
 
 // Call Gemini API to get bot response
@@ -196,7 +196,7 @@ async function getGeminiResponse(prompt) {
 }
 
 // Handle weather-related prompts separately
-async function handleWeatherPrompt(userText) {
+async function handleWeatherPrompt (userText) {
   const cityMatch = userText.match(/ weather in ([^\s?.!]+)/i)
   if (!cityMatch) return null
 
