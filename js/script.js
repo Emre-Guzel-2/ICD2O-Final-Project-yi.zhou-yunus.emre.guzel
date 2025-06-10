@@ -4,8 +4,6 @@
  * This file contains the JS for index.html
  */
 
-/* global hljs */
-
 'use strict'
 
 // Get DOM elements
@@ -36,8 +34,8 @@ userInput.addEventListener('keyup', function (event) {
 // Handle form submission (user sends a message)
 chatForm.addEventListener('submit', async function (event) {
   event.preventDefault()
-  let userMessageText = userInput.value.trim();
-  let promptForGemini = "Imagine that you are Jarvis in Iron Man and answer all the questions like you are Jarvis.\r\n";
+  const userMessageText = userInput.value.trim()
+  let promptForGemini = 'Imagine that you are Jarvis in Iron Man and answer all the questions like you are Jarvis.\r\n'
 
   if (userMessageText !== '') {
     // Show user message in chat
@@ -47,16 +45,16 @@ chatForm.addEventListener('submit', async function (event) {
     userInput.value = ''
     userInput.style.height = 'auto'
     userInput.style.overflowY = 'hidden'
-    promptForGemini+=userMessageText;
+    promptForGemini += userMessageText
     // Show typing indicator
     const typingIndicatorId = 'typing-indicator-' + Date.now()
     appendMessage('Jarvis is thinking...', 'bot', typingIndicatorId)
     try {
       // Check if it's a weather question
-      if (userMessageText.toLowerCase().indexOf('weather in')>-1) {
+      if (userMessageText.toLowerCase().indexOf('weather in') > -1) {
         const weatherReply = await handleWeatherPrompt(userMessageText)
-        //add weather information to userMessageText, and tell Gemini to use it.
-        promptForGemini += "\r\n NOTE: I called a weather API externally, include this information to answer: " + weatherReply;
+        // add weather information to userMessageText, and tell Gemini to use it.
+        promptForGemini += '\r\n NOTE: I called a weather API externally, include this information to answer: ' + weatherReply
       }
 
       // Get response from Gemini API
@@ -220,7 +218,7 @@ async function handleWeatherPrompt(userText) {
     const pressure = res.main.pressure
     const pressureAtm = (pressure / 1013.25).toFixed(2)
     const weatherMsg = `Temp: ${temp}°C\nPressure: ${pressure} hPa (${pressureAtm} atm)\n}`
-    const fullMsg = `**** ${res.name}, ${res.sys.country} ****\nTemperature: ${temp}°C\nHumidity: ${res.main.humidity}%\nWeather: ${res.weather[0].description}\nPressure: ${pressure} hPa (${pressureAtm} atm)}`
+    const fullMsg = `**** ${res.name}, ${res.sys.country} ****\nTemperature: ${temp}°C\nHumidity: ${res.main.humidity}%\nWeather: ${res.weather[0].description}\nPressure: ${pressure} hPa (${pressureAtm} atm)`
     return `${weatherMsg}\n\n${fullMsg}`
   } catch (error) {
     return `Failed to get weather info. ${error.message}`
