@@ -4,6 +4,8 @@
  * This file contains the JS for index.html
  */
 
+/* global hljs */
+
 'use strict'
 
 // Get DOM elements
