@@ -135,11 +135,11 @@ function escapeHtml (text) {
     '"': '&quot;',
     "'": '&#039;'
   }
-  return text.replace (/[&<>"']/g, function (m) { return map[m] })
+  return text.replace(/[&<>"']/g, function (m) { return map[m] })
 }
 
 // Call Gemini API to get bot response
-async function getGeminiResponse(prompt) {
+async function getGeminiResponse (prompt) {
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
 
   const requestBody = {
